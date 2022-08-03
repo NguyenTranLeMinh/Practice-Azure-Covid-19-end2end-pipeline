@@ -1,0 +1,22 @@
+{
+    "now": "2022-08-03T03:58:36.158Z",
+    "perfNow": 1914959.8999999762,
+    "diagnosticCorrelation": "168c64cc-3a8b-4604-8862-863e9d0dcc64",
+    "source": "DownloadSupportFiles",
+    "environment": {
+        "productName": "adf",
+        "buildVersion": "1.0.080122.15",
+        "environmentType": 3,
+        "resourceName": "covid-minh-adf",
+        "resourceRegion": "eastasia",
+        "resourceGroup": "covid-reporting-rg",
+        "subscriptionId": "6a363c1f-dc6a-4692-9e5c-658d2a49b737",
+        "sessionId": "lbVpf",
+        "operationId": "ubo1",
+        "gitType": "live"
+    },
+    "additionalInfo": {
+        "selectedResource": "df_transform_cases_and_deaths",
+        "selectedResourceType": "dataflow"
+    }
+}
