@@ -1,0 +1,22 @@
+{
+    "now": "2022-08-03T05:03:25.330Z",
+    "perfNow": 5804132.199999988,
+    "diagnosticCorrelation": "cac1ce1a-35ff-4fd0-832f-dd3e925f8507",
+    "source": "DownloadSupportFiles",
+    "environment": {
+        "productName": "adf",
+        "buildVersion": "1.0.080122.15",
+        "environmentType": 3,
+        "resourceName": "covid-minh-adf",
+        "resourceRegion": "eastasia",
+        "resourceGroup": "covid-reporting-rg",
+        "subscriptionId": "6a363c1f-dc6a-4692-9e5c-658d2a49b737",
+        "sessionId": "+APH0",
+        "operationId": "ubo1",
+        "gitType": "live"
+    },
+    "additionalInfo": {
+        "selectedResource": "df_transform_hospital_admissions",
+        "selectedResourceType": "dataflow"
+    }
+}
