@@ -31,4 +31,9 @@ Ngoài ra:
   + Data Bricks workspace được tạo, và ta mount các thư mục trong Data lake gen2 vào workspace (xem thư mục [Databricks-workspace/set-up](https://github.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/tree/master/Databricks-workspace/set-up))
   + Tạo một link services liên kết với workspace đó và dùng Access token được tạo trong workspace để liên kết, sử dụng Databricks cluster để chạy pipeline.
   + Viết 2 notebooks để biến đổi dữ liệu population và testing ([link](https://github.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/tree/master/Databricks-workspace/transform)).
+  
+4. Di chuyển dữ liệu đã xử lý vào DWH (ở đây là Azure SQL DB):
+- Dữ liệu đã xử lý vừa được lưu ở Data lake và cả Azure SQL DB.
+- Tạo Azure SQL DB và viết DDL scripts tương ứng để tạo sẵn các bảng: cases_deaths, hospital_admissions_daily, testing.
+- Tạo các pipelines để di chuyển dữ liệu trong processed container vào SQL DB (tạo các link services, datasets cần thiết).
 
