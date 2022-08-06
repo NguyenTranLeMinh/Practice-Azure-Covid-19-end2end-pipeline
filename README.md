@@ -11,13 +11,24 @@
 Từ azure blob tới data lake gen2 tương tự, thay http connector bằng blob connector.
 ![http to data lake gen2](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/Diagrams/2.Http%20to%20Data%20lake%20Gen2.png)
 
+Dữ liệu gồm các tệp csv sau:
+- cases_deaths liên quan số ca nhiễm và mất ngày/tuần.
+- hospital_admissions là số ca chiếm chỗ hồi sức đặc biệt/chỗ thông thường trong bệnh viện.
+- testing liên quan đến số ca được kiểm tra covid, tỉ lệ phát hiện bệnh.
+- population cung cấp thông tin về dân số theo từng nhóm tuổi: 0-14, 15-24, 25-49, 50-64,...
+Ngoài ra: 
+- dim_country cung cấp thông tin lookup về country_code, dân số các nước.
+- dim_date cung cấp thông tin lookup về ngày, tuần trong tháng, trong năm gần đây, đóng vai trò trong việc tạo ra cột year_week sao cho giống định dạng trong các dữ liệu như testing,... cũng như xác định được ngày bắt đầy/kết thúc mỗi tuần.
+
 3. Biến đổi các tệp trong data lake:
-- Các tệp sau khi nạp vào data lake gồm cdc và population:
-  + CDC gồm: cases_deaths là cố ca nhiễm và mất ngày/tuần, hospital_admissions là số ca chiếm chỗ hồi sức đặc biệt/chỗ thông thường trong bệnh viện, testing liên quan đến số lần test covid,...
-  + Population là thông tin bổ sung về dân số theo độ tuổi.
-- Ngoài ra còn có các tệp dim_country, dim_date dùng cho mục đích lookup, bổ sung thêm các cột cần thiết nhanh chóng hơn, như country_code, week_of_year,...
-- Dữ liệu được biến đổi bằng cách tạo Data pipeline bên trong chứa Data flow tương ứng trong Azure Data factory.
-  + Vd data flow cho biến đổi cases_deaths, được ghi vào lại data lake (raw data là trong raw container, còn data được xử l1y đặt trong processed container:
+- Dữ liệu được chứa trong raw container, biến đổi bằng cách tạo 4 pipelines trong Azure Data Factory, rồi ghi vào processed container.
+- Dữ liệu cases_and_deaths và hospital_admissions được biến đổi bằng cách tạo Data flow, rồi cho flow đó vào Data pipeline.
+  + Data flow cho biến đổi cases_deaths:
   ![df_cases_deaths](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/Data%20flows/df_transform_cases_and_deaths_support_live/df_image.PNG)
-  + Vd data flow cho biến đổi hospital_admissions, được ghi vào lại data lake:
+  + Data flow cho biến đổi hospital_admissions:
   ![df_hospital_admissions](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/Data%20flows/df_transform_hospital_admissions_support_live/df_image.PNG)
+- Dữ liệu population và testing được biến đổi bằng Data Bricks Notebook, rồi đặt notebooks đó trong Data pipeline. Chi tiết:
+  + Data Bricks workspace được tạo, và ta mount các thư mục trong Data lake gen2 vào workspace (xem thư mục [Databricks-workspace/set-up](https://github.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/tree/master/Databricks-workspace/set-up))
+  + Tạo một link services liên kết với workspace đó và dùng Access token được tạo trong workspace để liên kết, sử dụng Databricks cluster để chạy pipeline.
+  + Viết 2 notebooks để biến đổi dữ liệu population và testing ([link](https://github.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/tree/master/Databricks-workspace/transform)).
+
