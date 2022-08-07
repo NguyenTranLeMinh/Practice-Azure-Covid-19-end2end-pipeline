@@ -37,3 +37,7 @@ Ngoài ra:
 - Tạo Azure SQL DB và viết DDL scripts tương ứng để tạo sẵn các bảng: cases_deaths, hospital_admissions_daily, testing.
 - Tạo các pipelines để di chuyển dữ liệu trong processed container vào SQL DB (tạo các link services, datasets cần thiết).
 
+5. Điều phối việc thực thi tự động các pipelines:
+- Dùng pipline dependency và triggers dependency.
+- [Video demo](https://www.youtube.com/watch?v=dEpGdK1WB1w)
+
