@@ -51,3 +51,5 @@ Ngoài ra:
 - Dùng pipline dependency và triggers dependency.
 - [Video demo](https://www.youtube.com/watch?v=dEpGdK1WB1w)
 
+6. Tạo thử report bằng Power BI:
+![powerBI_testing](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/images/powerBI_test.png)
