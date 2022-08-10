@@ -3,6 +3,16 @@
 1. Overview diagram of this project:
 ![Overview diagram](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/Diagrams/1.Overview%20Diagram.png)
 
+- Tài nguyên được tạo thể hiện trên Dashboard, gồm:
+  + 1 Azure SQL DB đóng vai trò DWH.
+  + 1 Azure data lake gen2 (covidminhdl).
+  + 1 Azure blob storage (covidminhsa).
+  + 1 Azure Data factory.
+  + 1 Databricks workspace (để sử dụng Spark cluster biến đổi dữ liệu).
+  + 1 đồ thị có được từ việc theo dõi metric số pipelines chạy thành công/thất bại.
+  + Ngoài ra, Logs Analytics là tùy chọn cho việc phân tích logs nếu cần.
+![Dashboard](https://raw.githubusercontent.com/NguyenTranLeMinh/Practice-Azure-Covid-19-end2end-pipeline/master/Diagrams/dashboard.PNG)
+
 2. Di chuyển dữ liệu từ link http vào Azure data lake gen2 gồm các thành phần sau:
 - Tạo 2 link services, một cái ứng với http connector, một cái ứng với data lake.
 - Tạo 2 datasets để định nghĩa schema và các thông tin cần thiết cho dữ liệu chứa bên trong.
